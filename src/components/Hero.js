@@ -26,7 +26,7 @@ const Hero = (props) => {
   }, [props.id]);
   return (
     <div className='grid-2'>
-      <img src={hero.thumbnail} alt='hero image' />
+      <img src={hero.thumbnail} alt='' />
       <div>
         <h1 className='text-center my-2 heroHeading'>{hero.name}</h1>
         <p className='m-2 heroInfo'>{hero.description}</p>

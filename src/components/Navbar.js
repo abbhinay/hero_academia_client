@@ -6,7 +6,7 @@ import marvelLogo from '../assets/marvel-logo.jpg';
 //import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
-  const { icon, title } = props;
+  const { title } = props;
   return (
     <nav className='navbar bg-primary'>
       <h1 className='heroHeading'>{title}</h1>

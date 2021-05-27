@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Autocomplete, TextInput } from 'evergreen-ui';
 import axios from 'axios';
 import './AutoComplete.css';
 
@@ -39,7 +38,6 @@ const AutoComplete = (props) => {
     <>
       <div className='wrapper'>
         <div className='search-input'>
-          <a href='' target='_blank' hidden></a>
           <input
             type='text'
             placeholder='Type to search..'
