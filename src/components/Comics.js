@@ -8,7 +8,7 @@ const Comics = (props) => {
   const getComics = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/search/${props.id}`
+        `https://hero-academia-app.herokuapp.com/api/search/${props.id}`
       );
       //console.log(res.data);
       const newComics = res.data.map((comic) => {

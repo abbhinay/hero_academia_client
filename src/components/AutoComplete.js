@@ -14,7 +14,7 @@ const AutoComplete = (props) => {
   const getItem = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/autocomplete/${value}`
+        `https://hero-academia-app.herokuapp.com/api/autocomplete/${value}`
       );
       setItems((prevItem) => res.data);
     } catch (err) {

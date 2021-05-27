@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Hero = (props) => {
+const Hero = ({ id }) => {
   const [hero, setHero] = useState({});
 
   const getHero = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/character/${props.id}`
-      );
+      const res = await axios.get(`https://hero-academia-app.herokuapp.com/api/character/${id}`);
       console.log(res.data);
       const newHero = {
         name: res.data.name,
@@ -23,7 +21,7 @@ const Hero = (props) => {
 
   useEffect(() => {
     getHero();
-  }, [props.id]);
+  }, [id]);
   return (
     <div className='grid-2'>
       <img src={hero.thumbnail} alt='' />
