@@ -1,3 +1,11 @@
+# Link to the Live App
+
+[Hero Academia](https://hero-academia.netlify.app)
+
+# Github Link to the Server Code of this App
+
+[Hero Academia Server](https://github.com/abbhinay/Hero_Academia)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
