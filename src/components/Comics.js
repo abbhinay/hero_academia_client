@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Spinner from './Spinner/Spinner';
 import axios from 'axios';
 
 const Comics = (props) => {
   const [comics, setComics] = useState([]);
   const [showComics, setShowComics] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const getComics = async () => {
     try {
@@ -27,30 +29,36 @@ const Comics = (props) => {
   };
 
   useEffect(() => {
+    setLoading(true);
     getComics();
+    setLoading(false);
   }, [props.id]);
 
-  return (
-    <>
-      {showComics && (
-        <h1
-          style={{ color: 'white', marginTop: '3rem' }}
-          className='text-center heroHeading'
-        >
-          Comics
-        </h1>
-      )}
-      <div className='grid-4'>
-        {comics.map((cc) => (
-          <div className='card'>
-            <img src={cc.thumbnail} alt='' />
+  if (loading) {
+    <Spinner />;
+  } else {
+    return (
+      <>
+        {showComics && (
+          <h1
+            style={{ color: 'white', marginTop: '3rem' }}
+            className='text-center heroHeading'
+          >
+            Comics
+          </h1>
+        )}
+        <div className='grid-4'>
+          {comics.map((cc) => (
+            <div className='card'>
+              <img src={cc.thumbnail} alt='' />
 
-            <h4 style={{ color: 'white' }}>{cc.title}</h4>
-          </div>
-        ))}
-      </div>
-    </>
-  );
+              <h4 style={{ color: 'white' }}>{cc.title}</h4>
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  }
 };
 
 export default Comics;

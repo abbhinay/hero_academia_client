@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Spinner from '../components/Spinner/Spinner';
 import axios from 'axios';
 import './AutoComplete.css';
 
@@ -6,6 +7,7 @@ const AutoComplete = (props) => {
   const [value, setValue] = useState('');
   const [items, setItems] = useState([]);
   const [hero, setHero] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     console.log(hero);
@@ -13,10 +15,12 @@ const AutoComplete = (props) => {
 
   const getItem = async () => {
     try {
+      setLoading(true);
       const res = await axios.get(
         `https://hero-academia-app.herokuapp.com/api/autocomplete/${value}`
       );
       setItems((prevItem) => res.data);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -43,11 +47,12 @@ const AutoComplete = (props) => {
             placeholder='Type to search..'
             value={value}
             onChange={(event) => {
-              if (event.code === 'Enter') getItem(event);
-              else change(event);
+              change(event);
             }}
           />
+
           <div className='autocom-box'>
+            {loading && <Spinner />}
             {items.map((item) => (
               <li
                 className='autoComplete'
